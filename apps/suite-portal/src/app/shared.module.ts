@@ -13,6 +13,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   imports: [
@@ -29,6 +31,9 @@ import { MatCardModule } from '@angular/material/card';
     MatSnackBarModule,
     MatTableModule,
     MatToolbarModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     MatButtonModule,
@@ -44,6 +49,9 @@ import { MatCardModule } from '@angular/material/card';
     MatSnackBarModule,
     MatTableModule,
     MatToolbarModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class SharedModule {}

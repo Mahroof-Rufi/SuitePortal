@@ -1,0 +1,32 @@
+<div class="admin-login-container">
+    <div class="login-card">
+      <div class="card-header">
+        <h2>Admin Login</h2>
+        <div class="underline"></div>
+      </div>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+        <div class="form-group">
+          <input type="email" formControlName="email" required placeholder=" ">
+          <label for="email">Email</label>
+          <div class="input-indicator"></div>
+        </div>
+        <div class="form-group">
+          <input type="password" formControlName="password" required placeholder=" ">
+          <label for="password">Password</label>
+          <div class="input-indicator"></div>
+        </div>
+        <div class="error-message" *ngIf="errMessage">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="error-icon">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <span>{{ errMessage }}</span>
+        </div>
+        <button type="submit" [disabled]="loginForm.invalid">
+          <span>Login</span>
+          <div class="button-indicator"></div>
+        </button>
+      </form>
+    </div>
+  </div>

@@ -1,0 +1,49 @@
+<div class="admin-interface">
+    <header class="admin-header">
+      <h1>Maintenance Requests</h1>
+      <button class="logout-button" (click)="logout()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logout-icon">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+          <polyline points="16 17 21 12 16 7"></polyline>
+          <line x1="21" y1="12" x2="9" y2="12"></line>
+        </svg>
+        Logout
+      </button>
+    </header>
+    
+    <div class="request-container" [ngClass]="{'empty': maintenanceRequests.length === 0}">
+      <ng-container *ngIf="maintenanceRequests.length > 0; else emptyState">
+        <div *ngFor="let request of maintenanceRequests" class="request-card">
+          <div class="card-header">
+            <h3>{{ request.name }}</h3>
+            <span class="id">ID: {{ request.id }}</span>
+          </div>
+          <div class="card-body">
+            <p><strong>Email:</strong> {{ request.email }}</p>
+            <p><strong>Service Type:</strong> {{ request.serviceType }}</p>
+            <p><strong>Unit:</strong> {{ request.unit }}</p>
+            <p><strong>Summary:</strong> {{ request.summary }}</p>
+            <p><strong>Details:</strong> {{ request.details }}</p>
+          </div>
+          <div class="card-footer">
+            <span class="timestamp">Submitted: {{ request.submittedAt | date:'medium' }}</span>
+            <button class="close-button" (click)="openConfirmDialog(request.id)">Close Request</button>
+          </div>
+        </div>
+      </ng-container>
+      
+      <ng-template #emptyState>
+        <div class="empty-state">
+          <div class="empty-state-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+          </div>
+          <h2>No Pending Requests</h2>
+          <p>There are currently no maintenance requests to display.</p>
+        </div>
+      </ng-template>
+    </div>
+  </div>

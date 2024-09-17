@@ -6,16 +6,23 @@ import { MaintenanceRequestDao, MaintenanceRequestDB } from './maintenance-reque
 export class MaintenanceRequestService {
 
   constructor(
-    private readonly maintReqDao: MaintenanceRequestDao,
+    private readonly _maintReqDao: MaintenanceRequestDao,
   ) {
     //
   }
 
+  // create new maintenance request 
   async createMaintenanceRequest(maintenanceRequest: MaintenanceRequest) {
-    return await this.maintReqDao.insertNewRequest(maintenanceRequest);
+    return await this._maintReqDao.insertNewRequest(maintenanceRequest);
   }
 
-  async getMaintenanceRequest(id: string): Promise<MaintenanceRequestDB> {
-    return await this.maintReqDao.getMaintenanceRequest(id);
+  // fetch all active maintenance requests
+  async getAllMaintenanceRequest(): Promise<MaintenanceRequestDB[]> {
+    return await this._maintReqDao.getAllMaintenanceRequests();
+  }
+
+  // close maintenance request using id
+  async closeMaintenanceRequest(id: string): Promise<MaintenanceRequestDB> {
+    return await this._maintReqDao.closeMaintenanceRequest(id);
   }
 }

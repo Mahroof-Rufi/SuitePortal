@@ -8,41 +8,50 @@
       </mat-card-header>
 
       <mat-card-content>
-        <form class="maint-form">
+        <form class="maint-form" [formGroup]="maintenanceForm" (ngSubmit)="submitMaintenance()">
           <mat-form-field>
             <mat-label>Apartment Unit #</mat-label>
-            <input matInput type="text" />
+            <input matInput type="number" formControlName="unit" />
           </mat-form-field>
+          <span *ngIf="maintenanceForm.get('unit').errors?.required && maintenanceForm.get('unit').touched">Unit is required</span>
 
           <mat-form-field>
             <mat-label>Requester Name</mat-label>
-            <input matInput type="text" />
+            <input matInput type="text" formControlName="name" />
           </mat-form-field>
+          <span *ngIf="maintenanceForm.get('name').errors?.required && maintenanceForm.get('name').touched">Name is required</span>
 
           <mat-form-field>
             <mat-label>Requester Email</mat-label>
-            <input matInput type="email" />
+            <input matInput type="email" formControlName="email" />
           </mat-form-field>
+          <span *ngIf="maintenanceForm.get('email').errors?.required && maintenanceForm.get('email').touched">Email is required</span>
+          <span *ngIf="maintenanceForm.get('email').errors?.email && maintenanceForm.get('email').touched">Enter a valid email</span>
 
           <mat-form-field>
             <mat-label>Service Type</mat-label>
-            <mat-select>
+            <mat-select formControlName="serviceType">
               <mat-option *ngFor="let serviceType of serviceTypes" [value]="serviceType">
                 {{serviceType}}
               </mat-option>
             </mat-select>
           </mat-form-field>
+          <span *ngIf="maintenanceForm.get('serviceType').errors?.required && maintenanceForm.get('serviceType').touched">Service type is required</span>
 
           <mat-form-field>
             <mat-label>Summary</mat-label>
-            <input matInput type="text" />
+            <input matInput type="text" formControlName="summary"/>
           </mat-form-field>
+          <span *ngIf="maintenanceForm.get('summary').errors?.required && maintenanceForm.get('summary').touched">summary is required</span>
 
           <mat-form-field>
             <mat-label>Details</mat-label>
-            <textarea matInput></textarea>
+            <textarea matInput formControlName="details"></textarea>
           </mat-form-field>
-
+          <span *ngIf="maintenanceForm.get('details').errors?.required && maintenanceForm.get('details').touched">
+            Details is required
+          </span>
+          
           <button mat-raised-button color="accent">
             Submit
           </button>

@@ -1,0 +1,17 @@
+<div *ngIf="data.context == 'close confirmation'">
+    <h2 mat-dialog-title>{{ data.title }}</h2>
+    <mat-dialog-content>{{ data.message }}</mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-button (click)="onCancel()">Cancel</button>
+      <button mat-button color="primary" (click)="onCloseConfirm()">Confirm</button>
+    </mat-dialog-actions>
+</div>
+
+<div *ngIf="data.context == 'request confirmation'">
+    <h2 mat-dialog-title>{{ data.title }}</h2>
+    <mat-dialog-content>{{ data.message }}</mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-button (click)="onCancel()">Cancel</button>
+      <button mat-button color="primary" (click)="onRequestConfirm()">Confirm</button>
+    </mat-dialog-actions>
+</div>

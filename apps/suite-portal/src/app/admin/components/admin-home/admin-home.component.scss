@@ -1,0 +1,192 @@
+@import '~@angular/material/theming';
+
+$primary-color: mat-color($mat-indigo, 500);
+$accent-color: mat-color($mat-pink, A200);
+$background-color: #f5f5f5;
+$card-bg-color: #ffffff;
+$text-color: #333333;
+$button-color: mat-color($mat-green, 500);
+$empty-state-color: mat-color($mat-grey, 400);
+
+.admin-interface {
+  background-color: $background-color;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.admin-header {
+    background-color: $primary-color;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+  }
+  
+  .logout-button {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+  
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  
+    .logout-icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+    }
+  }
+
+.request-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  
+  &.empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 200px); // Adjust based on your header height
+  }
+}
+
+.request-card {
+  background-color: $card-bg-color;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.card-header {
+  background-color: $primary-color;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  h3 {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+  
+  .id {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+}
+
+.card-body {
+  padding: 20px;
+  color: $text-color;
+  
+  p {
+    margin: 10px 0;
+    line-height: 1.4;
+    
+    strong {
+      color: $primary-color;
+    }
+  }
+}
+
+.card-footer {
+  background-color: lighten($primary-color, 45%);
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.timestamp {
+  font-size: 0.9rem;
+  color: darken($primary-color, 20%);
+  font-style: italic;
+}
+
+.close-button {
+  background-color: $button-color;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($button-color, 10%);
+  }
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  background-color: $card-bg-color;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  
+  .empty-state-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    color: $empty-state-color;
+    
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  
+  h2 {
+    color: $primary-color;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    color: $text-color;
+    font-size: 1.1rem;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.empty-state {
+  animation: pulse 3s infinite ease-in-out;
+}

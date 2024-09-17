@@ -27,3 +27,9 @@ export interface MaintenanceRequest {
   details?: string;
 }
 
+export interface Admin {
+  // Email of the Admin
+  email: string;
+  // Password of the Admin
+  password: string;
+}
